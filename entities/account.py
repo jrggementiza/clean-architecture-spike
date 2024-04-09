@@ -10,7 +10,7 @@ class Account:
     ):
         self.account_id = account_id
         self.customer_id = customer_id
-        self.account_number = account_number
+        self.account_number = account_number  # TODO: Auto generate if None upon create
         self.balance = balance
 
     def get_balance(self):
