@@ -13,7 +13,7 @@ def new_account():
 def test_account_creation():
     account = Account(1, 1, "TEST1234")
 
-    assert account.id == 1
+    assert account.account_id == 1
     assert account.customer_id == 1
     assert account.account_number == "TEST1234"
     assert account.balance == Decimal("0.00")

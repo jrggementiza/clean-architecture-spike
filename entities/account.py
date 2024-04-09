@@ -3,9 +3,9 @@ from decimal import Decimal
 
 class Account:
     def __init__(
-        self, id=None, customer_id=None, account_number=None, balance=Decimal("0.00")
+        self, account_id=None, customer_id=None, account_number=None, balance=Decimal("0.00")
     ):
-        self.id = id
+        self.account_id = account_id
         self.customer_id = customer_id
         self.account_number = account_number
         self.balance = balance
