@@ -3,6 +3,7 @@ from decimal import Decimal
 import pytest
 
 from entities.account import Account
+from entities.transaction import Transaction
 
 
 @pytest.fixture
@@ -10,7 +11,7 @@ def new_account():
     return Account(1, 1, "TEST1234")
 
 
-def test_account_creation():
+def test_create_account():
     account = Account(1, 1, "TEST1234")
 
     assert account.account_id == 1
@@ -28,9 +29,12 @@ def test_account_get_balance(new_account):
 
 def test_account_deposit(new_account):
     amount = Decimal("10000.00")
-    new_account.deposit(amount)
+    transaction = new_account.deposit(amount)
 
-    # TODO: Add return Transaction behavior
+    assert isinstance(transaction, Transaction)
+    assert transaction.account_id == new_account.account_id
+    assert transaction.type == "Deposit"
+    assert transaction.amount == amount
     assert new_account.balance == amount
 
 
@@ -45,9 +49,12 @@ def test_account_withdraw(new_account):
     withdraw_amount = Decimal("4000.00")
 
     new_account.balance = starting_balance
-    new_account.withdraw(withdraw_amount)
+    transaction = new_account.withdraw(withdraw_amount)
 
-    # TODO: Add return Transaction behavior
+    assert isinstance(transaction, Transaction)
+    assert transaction.account_id == new_account.account_id
+    assert transaction.type == "Withdraw"
+    assert transaction.amount == withdraw_amount
     assert new_account.balance == starting_balance - withdraw_amount
 
 

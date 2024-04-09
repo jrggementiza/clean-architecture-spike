@@ -1,6 +1,9 @@
 from decimal import Decimal
 
 
+from .transaction import Transaction
+
+
 class Account:
     def __init__(
         self, account_id=None, customer_id=None, account_number=None, balance=Decimal("0.00")
@@ -19,6 +22,8 @@ class Account:
 
         self.balance += amount
 
+        return Transaction(self.account_id, "Deposit", amount)
+
     def withdraw(self, amount):
         if amount < Decimal("0.00"):
             raise ValueError("Negative amount not allowed")
@@ -27,3 +32,5 @@ class Account:
             raise ValueError("Insufficient balance")
 
         self.balance -= amount
+
+        return Transaction(self.account_id, "Withdraw", amount)
