@@ -1,5 +1,7 @@
 from entities.customer import Customer
-from repositories.customer_repository import CustomerRepository
+from repositories.customer_repository import (
+    CustomerRepository,
+)  # TODO: plug in init by default
 
 
 class CreateCustomerUseCase:
