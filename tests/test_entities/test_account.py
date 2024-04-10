@@ -1,4 +1,5 @@
 from decimal import Decimal
+from unittest.mock import patch
 
 import pytest
 
@@ -18,6 +19,13 @@ def test_create_account():
     assert account.customer_id == 1
     assert account.account_number == "TEST1234"
     assert account.balance == Decimal("0.00")
+
+
+def test_created_account_geenerates_account_number_if_none():
+    with patch.object(Account, "_generate_account_number", return_value="123456654321"):
+        account = Account(1, 1)
+
+        assert account.account_number == "123456654321"
 
 
 def test_account_get_balance(new_account):
