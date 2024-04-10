@@ -5,9 +5,10 @@ from entities.transaction import Transaction
 
 
 def test_create_transaction():
-    transaction = Transaction(1, "Deposit", Decimal("1.00"), "TEST1234")
+    transaction = Transaction(1, "Deposit", Decimal("1.00"), "TEST1234", transaction_id=1)
 
     assert transaction.account_id == 1
+    assert transaction.transaction_id == 1
     assert transaction.type == "Deposit"
     assert transaction.amount == Decimal("1.00")
     assert transaction.reference_code == "TEST1234"
