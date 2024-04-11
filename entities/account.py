@@ -17,6 +17,9 @@ class Account:
         self.customer_id = customer_id
         self.account_number = account_number or self._generate_account_number()
         self.balance = balance
+    
+    def __repr__(self):
+        return f"Account Number {self.account_number} | Balance {self.balance}"
 
     def _generate_account_number(self):
         return "".join(random.choices("0123456789", k=12))

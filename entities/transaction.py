@@ -9,5 +9,8 @@ class Transaction:
         self.reference_code = reference_code or self._generate_reference_code()
         self.transaction_id = transaction_id
 
+    def __repr__(self):
+        return f"{self.type.title()} {self.amount} | Reference Code: {self.reference_code}"
+
     def _generate_reference_code(self):
         return "".join(random.choices("0123456789", k=6))
