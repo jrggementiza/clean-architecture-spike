@@ -57,5 +57,4 @@ def test_get_by_account_id(transaction_repository):
     assert retrieved_transaction.transaction_id == 1
     assert retrieved_transaction.account_id == 2
 
-    with pytest.raises(DoesNotExist):
-        transaction_repository.get_by_account_id(99)
+    assert transaction_repository.get_by_account_id(99) == []

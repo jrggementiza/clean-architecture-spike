@@ -26,11 +26,5 @@ class TransactionRepository:
         retrieved_transactions = [
             txn for txn in self.storage.values() if txn.account_id == account_id
         ]
-        if not retrieved_transactions:
-            raise DoesNotExist(
-                type(self),
-                account_id,
-                f"{type(self)} with account_id {account_id} does not exist",
-            )
 
-        return retrieved_transactions
+        return retrieved_transactions or []
