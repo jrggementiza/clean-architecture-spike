@@ -34,3 +34,8 @@ def test_generate_statement(new_account, transaction_repository):
 
     assert isinstance(transactions, list)
     assert len(transactions) == 3
+
+    no_transactions = generate_statements_use_case.generate_statements(1000)
+
+    assert isinstance(no_transactions, list)
+    assert len(no_transactions) == 0
