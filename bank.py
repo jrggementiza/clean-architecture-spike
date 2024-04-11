@@ -51,11 +51,11 @@ class Bank:
             account, "Withdraw", amount
         )
 
-    def check_balance(self, account) -> Decimal:
+    def check_balance(self, account) -> str:
         balance = self.check_balance_use_case.check_balance(account.account_id)
         return f"Account Number {account.account_number} | Balance {balance}"
 
-    def generate_statements(self, account) -> list[Transaction]:
+    def generate_statements(self, account) -> str:
         transactions = self.generate_statements_use_case.generate_statements(
             account.account_id
         )
